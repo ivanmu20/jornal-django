@@ -1,0 +1,7 @@
+<h1>Jornal</h1>
+
+{% for article in articles %}
+<a href="{% url 'article' article.id %}">
+  <h2>{{ article.title }}</h2>
+</a>
+{% endfor %}
