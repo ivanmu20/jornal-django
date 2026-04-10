@@ -1,11 +1,23 @@
-<h1>Comentários - {{ article.title }}</h1>
+{% extends 'base.html' %} {% block content %}
 
-<form method="POST">
+<h2>Comentários - {{ article.title }}</h2>
+
+<form method="POST" class="mb-4">
   {% csrf_token %}
-  <textarea name="text"></textarea>
-  <button type="submit">Comentar</button>
+  <textarea
+    name="text"
+    class="form-control mb-2"
+    placeholder="Escreve um comentário..."
+  ></textarea>
+  <button type="submit" class="btn btn-primary">Comentar</button>
 </form>
 
-{% for comment in comments %}
-<p>{{ comment.text }}</p>
-{% endfor %}
+<div class="card p-3">
+  {% for comment in comments %}
+  <p class="border-bottom pb-2">{{ comment.text }}</p>
+  {% empty %}
+  <p>Sem comentários ainda.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,7 +1,19 @@
-<h1>Jornal</h1>
+{% extends 'base.html' %} {% block content %}
+<h1 class="mb-4">Últimas Notícias</h1>
 
-{% for article in articles %}
-<a href="{% url 'article' article.id %}">
-  <h2>{{ article.title }}</h2>
-</a>
-{% endfor %}
+<div class="row">
+  {% for article in articles %}
+  <div class="col-md-6">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h4>{{ article.title }}</h4>
+        <a href="{% url 'article' article.id %}" class="btn btn-primary mt-2">
+          Ler mais
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
